@@ -1,6 +1,4 @@
-class Empty(Exception):
-    pass
-
+from empty import Empty
 
 class ArrayStack:
     def __init__(self):
