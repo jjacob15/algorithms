@@ -1,5 +1,4 @@
-from empty import Empty
-
+from common.empty import Empty
 
 class ArrayQueue:
     DEFAULT_CAPACITY = 11
