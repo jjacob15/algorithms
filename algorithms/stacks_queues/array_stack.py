@@ -1,4 +1,4 @@
-from common.empty import Empty
+from ..common.empty import Empty
 
 class ArrayStack:
     def __init__(self):
