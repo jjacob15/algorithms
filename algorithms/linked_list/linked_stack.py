@@ -17,7 +17,7 @@ class LinkedStack:
             self._element = element
             self._next = next
 
-    def __init(self):
+    def __init__(self):
         self._head = None
         self._size = 0
 
@@ -28,7 +28,7 @@ class LinkedStack:
         return self._size == 0
 
     def push(self, e):
-        self.head = self._Node(e, self._head)
+        self._head = self._Node(e, self._head)
         self._size += 1
 
     def top(self):
@@ -43,3 +43,19 @@ class LinkedStack:
         self._head = self._head._next
         self._size -= 1
         return answer
+
+
+def test():
+    L = LinkedStack()
+    print('adding BOS',L.push('BOS'))
+    print('adding ATL',L.push('ATL'))
+    print('adding MSP',L.push('MSP'))
+    print('adding LAX',L.push('LAX'))
+    print(len(L))
+    print('Current top:', L.top())
+    print(L.pop())
+    print('Current new top:', L.top())
+
+
+if __name__ == "__main__":
+    test()
