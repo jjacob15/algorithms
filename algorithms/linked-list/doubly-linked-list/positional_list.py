@@ -1,7 +1,9 @@
-from doublylinkedbase import _DoublyLinkedBase
-
 # PositionalList validates the element when trying to insert before or after to check if it belongs to the same list.
 # good example where you are not using the node to keep the details of which list does it belongs too (container)
+
+from .doublylinkedbase import _DoublyLinkedBase
+
+
 class PositionalList(_DoublyLinkedBase):
     class Position:
         def __init__(self, container, node):
@@ -80,3 +82,7 @@ class PositionalList(_DoublyLinkedBase):
         old_value = original._element
         original._element = e
         return old_value
+
+
+if __name__ == "__main__":
+    print('jack')    
