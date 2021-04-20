@@ -117,7 +117,22 @@ class LinkedBinaryTree(BinaryTree):
         return node._element
 
     def _attach(self, p, t1, t2):
-        raise NotImplementedError('will do later')
+        node = self._validate(p)
+        if not self.is_left(p):
+            raise ValueError('position must be a leaf')
+        if not type(self) is type(t1) is type(t2):
+            raise TypeError('Trees types must match')
+        self._size += len(t1)+len(t2)
+        if not t1.is_empty():
+            t1._root._parent = node
+            node._left = t1._root
+            t1._root = None
+            t1._size = 0
+        if not t2.is_empty():
+            t2._root._parent = node
+            node._left = t2._root
+            t2._root = None
+            t2._size = 0
 
 
 def _run_test():
@@ -142,6 +157,7 @@ def _run_test():
     print(S._replace(benson, 'Bini'))
 
     print(S.depth(ryan))
+
 
 if __name__ == '__main__':
     _run_test()
