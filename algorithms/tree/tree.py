@@ -32,3 +32,9 @@ class Tree:
 
     def is_empty(self, p):
         return len(self) == 0
+
+    def depth(self, p):  # number of levels from p to root
+        if self.is_root(p):
+            return 0
+        else:
+            return 1 + self.depth(self.parent(p))

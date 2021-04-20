@@ -22,7 +22,7 @@ class PositionalList(_DoublyLinkedBase):
     def _validate(self, p):
         if not isinstance(p, self.Position):
             raise TypeError('p must be a proper Postion type')
-        if p._container is not self:  # check if the container is the same
+        if p._container is not self:  # check if the container is the same PositionalList
             raise ValueError('p does not belong in this container')
         if p._node._next is None:
             raise ValueError('p is no longer valid')
@@ -85,4 +85,4 @@ class PositionalList(_DoublyLinkedBase):
 
 
 if __name__ == "__main__":
-    print('jack')    
+    print('jack')
