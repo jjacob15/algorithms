@@ -45,13 +45,16 @@ class LinkedBinaryTree(BinaryTree):
     def root(self):
         return self._make_position(self._root)
 
-    def parent(self, node):
+    def parent(self, p):
+        node = self._validate(p)
         return self._make_position(node._parent)
 
-    def left(self, node):
+    def left(self, p):
+        node = self._validate(p)
         return self._make_position(node._left)
 
-    def right(self, node):
+    def right(self, p):
+        node = self._validate(p)
         return self._make_position(node._right)
 
     def num_children(self, p):
@@ -138,8 +141,7 @@ def _run_test():
 
     print(S._replace(benson, 'Bini'))
 
-    print(type(ryan))
-    print(S.depth(ryan._node))
+    print(S.depth(ryan))
 
 if __name__ == '__main__':
     _run_test()
