@@ -1,0 +1,18 @@
+Algorithm breadthfirst(T):
+    Initialize queue Q to contain T.root()
+    while Q not empty do
+        p = Q.dequeue()
+        perform the "visit" action for position p
+        for each child c in T.children(p) do 
+            Q.enqueue(c)
+
+for binary trees use the "inorder" traversal
+example of usage is ordered binary search trees
+
+Algorithm inorder(p):
+    if p has a left child lc then
+        inorder(lc)
+    perform "visit" action on p
+    if p has a right child rc then
+        inorder(rc)
+    perform "visit" action on p
