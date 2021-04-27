@@ -145,18 +145,21 @@ def _run_test():
     tina = S._add_left(jaison, 'Tina')
     ryan = S._add_right(jaison, 'Ryan')
 
-    print(S.num_children(root))
-    print(S.num_children(jaison))
-    print(S.num_children(benson))
+    print("Printing preordered tree")
+    for e in S.preorder():
+        print(e.element())
+    # print(S.num_children(root))
+    # print(S.num_children(jaison))
+    # print(S.num_children(benson))
 
-    print(len(S))
+    # print(len(S))
 
-    print(S.is_left(ryan))
-    print(S.is_left(jaison))
+    # print(S.is_left(ryan))
+    # print(S.is_left(jaison))
 
-    print(S._replace(benson, 'Bini'))
+    # print(S._replace(benson, 'Bini'))
 
-    print(S.depth(ryan))
+    # print(S.depth(ryan))
 
 
 if __name__ == '__main__':

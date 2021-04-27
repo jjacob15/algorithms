@@ -30,7 +30,7 @@ class Tree:
     def is_left(self, p):
         return self.num_children(p) == 0
 
-    def is_empty(self, p):
+    def is_empty(self):
         return len(self) == 0
 
     def depth(self, p):  # number of levels from p to root
@@ -38,3 +38,17 @@ class Tree:
             return 0
         else:
             return 1 + self.depth(self.parent(p))
+
+    def preorder(self):
+        # generate a preorder iteration of positions in the tree
+        if not self.is_empty():
+            for p in self._subtree_preoder(self.root()):
+                yield p
+
+    def _subtree_preoder(self, p):
+        yield p
+        for c in self.children(p):
+            for other in self._subtree_preoder(c):
+                yield other
+
+    # def postorder(self):
