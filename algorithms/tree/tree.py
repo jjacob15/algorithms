@@ -51,4 +51,14 @@ class Tree:
             for other in self._subtree_preoder(c):
                 yield other
 
-    # def postorder(self):
+    def postorder(self):
+        # generate a postorder iteration of positions in the tree
+        if not self.is_empty():
+            for p in self._subtree_preoder(self.root()):
+                yield p
+
+    def _subtree_preoder(self, p):
+        for c in self.children(p):
+            for other in self._subtree_preoder(c):
+                yield other
+        yield p

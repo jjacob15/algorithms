@@ -148,6 +148,10 @@ def _run_test():
     print("Printing preordered tree")
     for e in S.preorder():
         print(e.element())
+
+    print("Printing postordered tree")
+    for e in S.postorder():
+        print(e.element())
     # print(S.num_children(root))
     # print(S.num_children(jaison))
     # print(S.num_children(benson))
