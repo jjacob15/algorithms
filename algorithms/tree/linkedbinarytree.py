@@ -1,4 +1,5 @@
 from .binarytree import BinaryTree
+from .traversal.binaryeulertour import BinaryEulerTour
 
 
 class LinkedBinaryTree(BinaryTree):
@@ -135,6 +136,21 @@ class LinkedBinaryTree(BinaryTree):
             t2._size = 0
 
 
+class BinaryEulerTourImplementation(BinaryEulerTour):
+    def __init__(self, tree):
+        super().__init__(tree)
+
+    def _hook_previsit(self, p, d, path):
+        print("pre {0}".format(p.element()))
+
+    def _hook_postvisit(self, p, d, path, result):
+        print("post {0} - {1}".format(p.element(), result))
+        return p.element()
+
+    def _hook_invisit(self, p, d, path):
+        print("invisit {0}".format(p.element()))
+
+
 def _run_test():
     S = LinkedBinaryTree()
     print(S.root())
@@ -152,6 +168,10 @@ def _run_test():
     print("Printing postordered tree")
     for e in S.postorder():
         print(e.element())
+
+    print('----------------------------\n')
+    eulartour = BinaryEulerTourImplementation(S)
+    eulartour.execute()
     # print(S.num_children(root))
     # print(S.num_children(jaison))
     # print(S.num_children(benson))

@@ -17,5 +17,5 @@ class BinaryEulerTour(EulerTour):
         answer = self._hook_postvisit(p, d, path, result)
         return answer
 
-    def _hook_invisit(p, d, path):
+    def _hook_invisit(self, p, d, path):
         pass
