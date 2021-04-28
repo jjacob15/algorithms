@@ -1,0 +1,5 @@
+Algorithm eulertour(T,p):
+    perform the "pre visit" action for position p
+    for each child c in T.children(p) do 
+        eulertour(T,c)
+    perform the "post visit" action for position p
