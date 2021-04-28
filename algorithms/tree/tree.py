@@ -39,6 +39,9 @@ class Tree:
         else:
             return 1 + self.depth(self.parent(p))
 
+    def positions(self):
+        return self.preorder()
+
     def preorder(self):
         # generate a preorder iteration of positions in the tree
         if not self.is_empty():

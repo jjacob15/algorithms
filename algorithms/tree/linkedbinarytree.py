@@ -146,7 +146,7 @@ def _run_test():
     ryan = S._add_right(jaison, 'Ryan')
 
     print("Printing preordered tree")
-    for e in S.preorder():
+    for e in S.positions():
         print(e.element())
 
     print("Printing postordered tree")
