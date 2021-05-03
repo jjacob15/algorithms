@@ -20,7 +20,7 @@ class _DoublyLinkedBase:
     def is_empty(self):
         return self._size == 0
 
-    def _insert_between(self, e, predecessor, successor):
+    def _insert_between(self, element, predecessor, successor):
         newest = self._Node(element, predecessor, successor)
         predecessor._next = newest
         successor._prev = newest
