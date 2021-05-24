@@ -3,6 +3,7 @@ Adding values goes to the left and then right.
 After the add, you do a swap with the parent until the added node priority is lesser than child node.
 """
 from ..priority_queue_base import PriorityQueueBase
+from ...common.empty import Empty
 
 
 class HeapPriorityQueue(PriorityQueueBase):
@@ -42,3 +43,28 @@ class HeapPriorityQueue(PriorityQueueBase):
             if self._data[small_child] < self._data[j]:
                 self._swap(j, small_child)
                 self._downheap(small_child)
+
+    def __init__(self):
+        self._data = []
+
+    def __len__(self):
+        return len(self._data)
+
+    def add(self, key, value):
+        self._data.append(self._item(key, value))
+        self._upheap(len(self._data)-1)
+
+    def min(self):
+        if self.is_empty():
+            raise Empty('Priority queue is empty')
+        item = self._data[0]
+        return (item._key, item._value)
+
+    def remove_min(self):
+        if self.is_empty():
+            raise Empty('Priority queue is empty')
+
+        self._swap(0, len(self._data)-1)
+        item = self._data.pop()
+        self._downheap(0)
+        return (item._key, item._value)
