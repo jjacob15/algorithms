@@ -1,12 +1,13 @@
-from common.empty import Empty
+from ..common.empty import Empty
+
 
 class ArrayQueue:
     DEFAULT_CAPACITY = 11
 
     def __init__(self):
         self._data = [None] * ArrayQueue.DEFAULT_CAPACITY
-        self._size = 0 #number of elements in the queue
-        self._front = 0 #the first element index
+        self._size = 0  # number of elements in the queue
+        self._front = 0  # the first element index
 
     def __len__(self):
         return self._size
@@ -31,7 +32,8 @@ class ArrayQueue:
     def enqueue(self, e):
         if self._size == len(self._data):
             self._resize(2*len(self._data))
-        avail = (self._front + self._size) % len(self._data)  #needed to wrap around the queue 
+        # needed to wrap around the queue
+        avail = (self._front + self._size) % len(self._data)
         self._data[avail] = e
         self._size += 1
 
