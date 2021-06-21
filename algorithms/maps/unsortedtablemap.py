@@ -4,13 +4,13 @@ class UnsortedTableMap(MapBase):
     def __init__(self):
         self._table = []
 
-    def __getitem(self,k):
+    def __getitem__(self,k):
         for item in self._table:
             if k == item._key:
                 return item._value
         raise KeyError('Key Error:' + repr(k))
 
-    def __setitem(self,k,v):
+    def __setitem__(self,k,v):
         for item in self._table:
             if k == item._key:
                 item._value = v
@@ -18,7 +18,7 @@ class UnsortedTableMap(MapBase):
 
         self._table.append(self._Item(k, v))
         
-    def __delitem(self,k):
+    def __delitem__(self,k):
         for j in range(len(self._table)):
             if k == self._table[j]._key:
                 self._table.pop(j)
