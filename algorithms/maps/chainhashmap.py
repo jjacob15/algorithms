@@ -1,9 +1,9 @@
-from hashmapbase import HashMapBase
-from unsortedtablemap import UnsortedTableMap
+from hash.hashmapbase import HashMapBase
+from hash.unsortedtablemap import UnsortedTableMap
 
 
 class ChainHashMap(HashMapBase):
-    def _bucket_getitems(self,j,k):
+    def _bucket_getitem(self,j,k):
         bucket = self._table[j]
         if bucket is None:
              raise KeyError('Key error:', repr(k))
@@ -28,3 +28,34 @@ class ChainHashMap(HashMapBase):
             if bucket is not None:
                 for key in bucket:
                     yield key
+
+
+if __name__ == '__main__':
+    class Id():
+        __slots__ = "_name", "_number"
+        def __init__(self,name,number):
+            self._name= name
+            self._number = number
+
+    M = ChainHashMap()
+    jaison = Id('jaison', '0413039523')
+    tina = Id('tina', '0432818243')
+    M[jaison] = 'my name is jaison'
+    M[tina] = 'my name is teena'
+
+    print(M[tina])
+    print(M[jaison])
+    M[tina] = 'I changed my name to Tina'
+    print(M[tina])
+
+
+    # M2 = ChainHashMap()
+    
+    # for i in range(100):
+    #     M2[i] = i
+    # print(len(M2))
+
+    # for i in range(100):
+    #     del M2[i]
+    
+    # print(len(M2))
