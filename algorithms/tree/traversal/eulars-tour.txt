@@ -3,3 +3,5 @@ Algorithm eulertour(T,p):
     for each child c in T.children(p) do 
         eulertour(T,c)
     perform the "post visit" action for position p
+
+You can compute the depth of the node by adding 1 for every pre visit and adding - 1 for every post visit.
