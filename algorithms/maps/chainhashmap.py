@@ -49,13 +49,13 @@ if __name__ == '__main__':
     print(M[tina])
 
 
-    # M2 = ChainHashMap()
+    M2 = ChainHashMap()
     
-    # for i in range(100):
-    #     M2[i] = i
-    # print(len(M2))
+    for i in range(100):
+        M2[i] = i
+    print(len(M2))
 
-    # for i in range(100):
-    #     del M2[i]
+    for i in range(100):
+        del M2[i]
     
-    # print(len(M2))
+    print(len(M2))
