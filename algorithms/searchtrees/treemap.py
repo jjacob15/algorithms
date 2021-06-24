@@ -164,3 +164,37 @@ class TreeMap(LinkedBinaryTree,MapBase):
         while p is not None:
             yield p.key()
             p = self.after(p)
+
+
+"""
+          44                                
+        /     \  
+       /       \
+      /         \
+    17          88
+   /  \       /    \
+  8   32     65     97
+      /     /  \   /
+     28    54  82 93
+      \       /
+       29    76
+              \
+               80    
+"""
+
+"""
+adding a node
+          44                                
+        /     \  
+       /       \
+      /         \
+    17          88
+   /  \       /    \
+  8   32     65     97
+      /     /  \   /
+     28    54  82 93
+      \       /
+       29    76
+            /  \
+           68   80    
+"""
