@@ -20,6 +20,8 @@ Deleting is a bit more complicated.
 - Has only one child, delete the node an replace the child parent with the nodes parent
 - Has two children, in this case, we need to find the node with the next largest value, swap them, and then delete the node in question. The node that
 that has the next largest value can't have 2 children itself since its left child would be a better candidate for the next largest.
+
+Disadvantages - if we were to make a tree from a sorted list, we would get an unbalanced skewed tree with all nodes to the right.
 """
 from ..tree.linkedbinarytree import LinkedBinaryTree
 from ..maps.hash.mapbase import MapBase
