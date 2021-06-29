@@ -1,3 +1,26 @@
+"""
+Principals
+- Left sub tree only contains values that are less than or equal to the nodes value
+- Right sub tree only contains values that are greater than or equal to the nodes value
+- Both left and right subtrees of all nodes are also binary search trees
+
+Finding minimum, go down the left
+Conversely, finding the maximum, go down the right
+
+Finding a number, check the value of each node and go left or right depending on whether the nodes value is less than or greater than 
+the one we are looking for
+
+Printing all numbers, we could use inorder traversal, printing everything out in the left subtree, followed by printing the node itself and then follwed 
+by printing everything out in the right subtree
+
+Adding to the tree is relatively painless, follow the three principals of BST
+
+Deleting is a bit more complicated.
+- If the element is a leaf node, delete it
+- Has only one child, delete the node an replace the child parent with the nodes parent
+- Has two children, in this case, we need to find the node with the next largest value, swap them, and then delete the node in question. The node that
+that has the next largest value can't have 2 children itself since its left child would be a better candidate for the next largest.
+"""
 from ..tree.linkedbinarytree import LinkedBinaryTree
 from ..maps.hash.mapbase import MapBase
 
