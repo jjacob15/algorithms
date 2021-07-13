@@ -14,6 +14,5 @@ def insertion_sort(S):
 
 if __name__ == "__main__":
     S = [85, 24, 63, 45, 17, 31, 96, 50]
-    print(S)
     insertion_sort(S)
     print(S)
