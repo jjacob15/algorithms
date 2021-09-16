@@ -15,9 +15,9 @@ def good_fibonacci(n):
         return (n, 0)
     else:
         print('in else with ', n)
-        a, b = good_fibonacci(n-1)
-        print(a, b, 'for', n)
-        return (a+b, a)
+        nVal, valBeforeN = good_fibonacci(n-1)
+        print(nVal, valBeforeN, 'for', n)
+        return (nVal+valBeforeN, nVal)
 
 
 print(good_fibonacci(10))

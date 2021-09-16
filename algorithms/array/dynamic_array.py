@@ -8,7 +8,7 @@ class DynamicArray:
         self._A = self._make_array(self._capacity)
 
     def __len__(self):
-        return self_n
+        return self._n
 
     def __getitem__(self, k):
         if not 0 <= k < self._n:

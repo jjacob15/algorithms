@@ -1,1 +1,6 @@
 for each recursion, you create an activation record and that adds to the overhead for each recursive iteration
+Recursions priciples are
+ - always have a base case
+ - try to recurse until the base case and when you hit base case, return what you want and do what you need to do
+    while the stack/records come off
+    
