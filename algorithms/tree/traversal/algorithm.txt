@@ -1,3 +1,4 @@
+every row and then the child row after. Can be implemented with a queue
 Algorithm breadthfirst(T):
     Initialize queue Q to contain T.root()
     while Q not empty do
@@ -6,13 +7,25 @@ Algorithm breadthfirst(T):
         for each child c in T.children(p) do 
             Q.enqueue(c)
 
-for binary trees use the "inorder" traversal
-example of usage is ordered binary search trees
+These are the different algos for traversal in a binary tree
 
 Algorithm inorder(p):
     if p has a left child lc then
         inorder(lc)
     perform "visit" action on p
+    if p has a right child rc then
+        inorder(rc)
+
+Algorithm preorder(p):
+    perform "visit" action on p
+    if p has a left child lc then
+        inorder(lc)
+    if p has a right child rc then
+        inorder(rc)
+
+Algorithm postorder(p):
+    if p has a left child lc then
+        inorder(lc)
     if p has a right child rc then
         inorder(rc)
     perform "visit" action on p
