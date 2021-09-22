@@ -1,0 +1,41 @@
+Dictionary
+
+hashing to make a key and comparing
+
+
+applications
+-doclist, search, spell check etc
+-databases
+-compilers and interpreters
+    -python held all globals variables were held in dicts
+-network router -> ip to list
+-searching in a string substring
+-string commonalities
+-cryptographic hashing
+
+
+
+It can be implemented in a balanced binary tree like an AVL tree which will search in O(log n) times
+We can have it at O(1) times with hashing and collision handling.
+O(n) can only be for worst case but most likely it would be O(1)
+
+
+
+hash function in python will give you extremely large intergers so we would likely need to fit it in a reasonably sized array.
+to have a good hash
+MAD (multiple add divide has)
+-do a base hash on the object
+-take a large prime number
+-take a random scale from 1 to prime (we use scale to bring it up to a large prime scale)
+-take another random from prime as shift (add the shift to shift position at a binary level)
+
+    (hash(k) * scale + shift)
+    (hash(k) * scale + shift) % prime (bring it back down to the limit of prime -1)
+    (hash(k) * scale + shift) % prime % length of table (bring it back down length of table)
+
+
+But when you do this you cause collisions, this can be handled variables
+    -chaining (linked list) 
+        - go to each hash location and a linked list or list at that point with key and value
+    -linear probing
+        - create a find slot method if slot is taken, walk to next position and get that position for key and value

@@ -1,0 +1,33 @@
+#Upheap - happens when an element is added to the binary tree
+
+Cost
+O(logn) for most operations
+
+
+The process of rearranging elements until the priority order is restored.
+Assuming the highest priority gets the lowest keys
+
+def upheap(element):
+    parent = element.parent
+        if element.key < parent.key:
+            swap(element,parent)
+            upheap(element)
+
+def downheap(element):
+    left = element.left
+    right = element.right
+        if left.key < element.key or right.key <element.key:
+            swapElement = left if left.key < right.key else right
+            swap(swapElement,element)
+            downheap(element)
+
+
+def swap(first,second):
+    if second.left is first:
+        first.left,second.left = second,first
+    if second.right is first:
+        first.right,second.right = second,first
+        
+    first.parent,second.parent = second.parent,first.parent
+        
+
