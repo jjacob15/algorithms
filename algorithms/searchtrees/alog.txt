@@ -1,0 +1,46 @@
+relink
+ a method that take a parent and child and make_let option
+ attaches child to parent depending on the make_left option
+ if child parent is not null
+ sets childs parent and parent
+
+
+ rotate(p)
+Rotate Position p above its parent.
+make the node the parent and bring the parent down as a left or right child depending on the parent child relation
+this element becomes the parent and its parent becomes the child
+Switches between these configurations, depending on whether p==a or p==b.
+     b                  a
+    / \                /  \
+   a  t2             t0   b
+  / \                     / \
+ t0  t1                  t1  t2
+Caller should ensure that p is not the root.
+"""        
+"""Rotate Position p above it parent"""
+ 
+
+restructure(x)
+if x is left or right of parent and parent is also left or right of grantparent, then rotate once on parent.
+else rotate twice on grand child
+
+
+        """Perform a trinode restructure among Position x, its parent, and its grandparent.
+        Return the Position that becomes root of the restructured subtree.
+        Assumes the nodes are in one of the following configurations:
+            z=a                 z=c           z=a               z=c
+           /  \                /  \          /  \              /  \
+          t0  y=b             y=b  t3       t0   y=c          y=a  t3
+             /  \            /  \               /  \         /  \
+            t1  x=c         x=a  t2            x=b  t3      t0   x=b
+               /  \        /  \               /  \              /  \
+              t2  t3      t0  t1             t1  t2            t1  t2
+        The subtree will be restructured so that the node with key b becomes its root.
+                  b
+                /   \
+              a       c
+             / \     / \
+            t0  t1  t2  t3
+        Caller should ensure that x has a grandparent.
+        """        
+        """Perform trinode restructure of Position x with parent/grantparent"""

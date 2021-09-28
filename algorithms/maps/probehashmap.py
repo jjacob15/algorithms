@@ -26,7 +26,7 @@ class ProbeHashMap(HashMapBase):
     def _bucket_getitem(self,j,k):
         found, s = self._find_slot(j,k)
         if not found:
-            raise KeyError('Key eerror :' ,repr(k))
+            raise KeyError('Key error :' ,repr(k))
         return self._table[s]._value
 
     def _bucket_setitem(self,j,k,v):

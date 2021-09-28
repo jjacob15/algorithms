@@ -154,6 +154,7 @@ class TreeMap(LinkedBinaryTree,MapBase):
 
     def _rotate(self,p):
         """Rotate Position p above its parent.
+            this element becomes the parent and its parent becomes the child
         Switches between these configurations, depending on whether p==a or p==b.
               b                  a
              / \                /  \
@@ -203,7 +204,7 @@ class TreeMap(LinkedBinaryTree,MapBase):
         """Perform trinode restructure of Position x with parent/grantparent"""
         y = self.parent(x)
         z = self.parent(y)
-        if (x == self.right(y) == (y == self.right(z))): # matching alignment
+        if (x == self.right(y) == (y == self.right(z))) or (x == self.left(y) == (y == self.left(z))):  # matching alignment
             self._rotate(y)
             return y
         else:
