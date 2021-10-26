@@ -3,13 +3,20 @@ import math
 
 class SimpleBinaryTree:
     class _Node:
-        __slots__ = '_element', '_parent', '_left', '_right'
+        __slots__ = '_element', '_parent', '_left', '_right', '_height'
 
         def __init__(self, element, parent=None, left=None, right=None):
             self._element = element
             self._parent = parent
             self._left = left
             self._right = right
+            self._height = 0
+
+        def left_height(self):
+            return self._left._height if self._left is not None else 0
+
+        def right_height(self):
+            return self._right._height if self._right is not None else 0
 
     class _PrintNode:
         __slots__ = '_node', '_level'
@@ -132,12 +139,12 @@ class SimpleBinaryTree:
         if( z is None):
             return
         if((x == self.right(y)) == (y == self.right(z)) or ((x == self.left(y)) == (y == self.left(z)))):
-            print('rotating onces')
             self._rotate(y)
+            return y
         else:
-            print('rotating twice')
             self._rotate(x)
             self._rotate(x)
+            return x
     # ----------------------------------------------------------------------------
 
     def _add(self, v, p):
@@ -145,60 +152,62 @@ class SimpleBinaryTree:
             self.add_root(v)
         elif v < p._element:
             if(self.left(p) is None):
-                self.add_left(v, p)
+                return self.add_left(v, p)
             else:
-                self._add(v, self.left(p))
+                return self._add(v, self.left(p))
         else:  # value is greater than node,adding to the right
             if(self.right(p) is None):
-                self.add_right(v, p)
+                return self.add_right(v, p)
             else:
-                self._add(v, self.right(p))
+                return self._add(v, self.right(p))
 
     def add(self,v):
         if(self._root is None):
             self._add(v, None)
         else:
-            self._add(v, self.root())
+            added = self._add(v, self.root())
+            self._rebalance(added)
 
-class TestForTriNodeRestructure:
-    def __init__(self):
-        self._tree = SimpleBinaryTree()
-    def run(self):
-        root = self._tree.add_root(10)
-        six = self._tree.add_left(6, root)
-        twelve = self._tree.add_right(12, root)
-        four =self._tree.add_left(4,six)
-        self._tree.add_right(7, six)
-        two =self._tree.add_left(2,four)
-        self._tree.add_right(5, four)
+    def _recompute_height(self,p):
+        p._height = 1 + \
+            max(p.left_height(), p.right_height())
 
-        self._tree.print()
-        self._tree._restructure(four)
-        self._tree.print()
+    def _isbalanced(self, p):
+        return abs(p.left_height() - p.right_height()) <= 1
+    
+    def _tall_child(self, p, favorleft = False):
+        if p.left_height() + ( 1 if favorleft else 0) > p.right_height():
+            return self.left(p)
+        else:
+            return self.right(p)
+
+    def _tall_grandchild(self,p):
+        child = self._tall_child(p)
+        alignment = (child == self.left(p))
+        return self._tall_child(child, alignment)
+
+    def _rebalance(self, p):
+        while p is not None:
+            old_height = p._height
+            if not self._isbalanced(p):
+                p = self._restructure(self._tall_grandchild(p))
+                self._recompute_height(self.left(p))
+                self._recompute_height(self.right(p))
+            self._recompute_height(p)
+            if p._height == old_height:
+                p = None
+            else:
+                p = self.parent(p)
 
 
-class TestForAddition:
-    def __init__(self):
-        self._tree = SimpleBinaryTree()
-    def run(self):
-        self._tree.add(10)
-        self._tree.add(6)
-        self._tree.add(12)
-        self._tree.add(4)
-        self._tree.add(7)
-        self._tree.add(2)
-        self._tree.add(5)
-        self._tree.add(5)
-        self._tree.print()
 
-
-if __name__ == "__main__":
-    tree = SimpleBinaryTree()
+# if __name__ == "__main__":
+#     tree = SimpleBinaryTree()
     # #------------------- Test for trinode rotation -------------------
     # T = TestForTriNodeRestructure()
     # T.run()
     # #------------------------------------------------------------
-    T = TestForAddition()
-    T.run()
+    # T = TestForAddition()
+    # T.run()
     # ----------------------- Test for addition ----------------------- 
 
