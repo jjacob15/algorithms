@@ -113,7 +113,6 @@ class SimpleBinaryTree:
 
 
     def _rotate(self,p):
-        print()
         x = p
         y = x._parent #assuming it exists
         z = y._parent #grandparent
@@ -198,16 +197,4 @@ class SimpleBinaryTree:
                 p = None
             else:
                 p = self.parent(p)
-
-
-
-# if __name__ == "__main__":
-#     tree = SimpleBinaryTree()
-    # #------------------- Test for trinode rotation -------------------
-    # T = TestForTriNodeRestructure()
-    # T.run()
-    # #------------------------------------------------------------
-    # T = TestForAddition()
-    # T.run()
-    # ----------------------- Test for addition ----------------------- 
 
